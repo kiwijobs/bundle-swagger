@@ -13,6 +13,7 @@
         "symfony/yaml": "^3.2"
     },
     "require-dev": {
+        "athletic/athletic": "^0.1.8",
         "barryvdh/laravel-ide-helper": "^2.3",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
@@ -24,6 +25,9 @@
             "Absolvent\\swagger\\database\\": "database/",
             "Absolvent\\swagger\\tests\\": "tests/"
         }
+    },
+    "suggest": {
+        "ext-yaml": "For high performance yaml parsing (RECOMMENDED FOR PRODUCTION)"
     },
     "scripts": {
         "post-root-package-install": [
@@ -39,6 +43,9 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "benchmark": [
+            "php ./vendor/bin/athletic -p ./app/Benchmarks -b ./vendor/autoload.php"
         ]
     },
     "config": {
