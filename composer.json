@@ -25,6 +25,9 @@
             "Absolvent\\swagger\\tests\\": "tests/"
         }
     },
+    "suggest": {
+        "ext-yaml": "Needed to support XML format in class Foo"
+    },
     "scripts": {
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""

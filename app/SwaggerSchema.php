@@ -12,6 +12,7 @@ use Dflydev\DotAccessData\Data;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Yaml\Yaml;
+use Exception;
 
 class SwaggerSchema extends Data
 {
@@ -22,8 +23,15 @@ class SwaggerSchema extends Data
 
     public static function fromFilename(string $filename): SwaggerSchema
     {
-        $schema = Yaml::parse(file_get_contents($filename));
-
+        if (function_exists('yaml_parse_file')) {
+            try {
+                $schema = yaml_parse_file($filename);
+            } catch (Exception $e) {
+                $schema = [];
+            }
+        } else {
+            $schema = Yaml::parse(file_get_contents($filename));
+        }
         return new static($schema, $filename);
     }
 
