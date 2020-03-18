@@ -22,7 +22,7 @@
         "athletic/athletic": "^0.1.8",
         "barryvdh/laravel-ide-helper": "^2.3",
         "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
+        "mockery/mockery": "0.9.*"
     },
     "autoload": {
         "psr-4": {
