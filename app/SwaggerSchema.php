@@ -4,15 +4,17 @@ namespace Absolvent\swagger;
 
 use Absolvent\swagger\Breadcrumbs\RequestPath as RequestPathBreadcrumbs;
 use Absolvent\swagger\Breadcrumbs\RequestPath\RequestMethod as RequestMethodBreadcrumbs;
-use Absolvent\swagger\Breadcrumbs\RequestPath\RequestMethod\ResponsePath as ResponsePathBreadcrumbs;
 use Absolvent\swagger\Breadcrumbs\RequestPath\RequestMethod\RequestParameters as RequestParametersBreadcrumbs;
+use Absolvent\swagger\Breadcrumbs\RequestPath\RequestMethod\ResponsePath as ResponsePathBreadcrumbs;
 use Absolvent\swagger\Exception\SchemaPartNotFound;
 use Absolvent\swagger\JsonSchema\RequestParameters as RequestParametersSchema;
 use Dflydev\DotAccessData\Data;
+use Exception;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Yaml\Yaml;
-use Exception;
+
 
 class SwaggerSchema extends Data
 {
@@ -42,7 +44,7 @@ class SwaggerSchema extends Data
 
     public static function refToPath(string $ref): string
     {
-        return str_replace('/', '.', str_replace_first('#/', '', $ref));
+        return str_replace('/', '.', Str::replaceFirst('#/', '', $ref));
     }
 
     public function __construct($schema, string $filename)
