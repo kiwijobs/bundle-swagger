@@ -2,6 +2,8 @@
 
 namespace Absolvent\swagger;
 
+use Illuminate\Support\Str;
+
 class RelativePath
 {
     public $basePath;
@@ -15,7 +17,7 @@ class RelativePath
 
     public function getRelativePath(): string
     {
-        if (starts_with($this->pathInfo, $this->basePath)) {
+        if (Str::startsWith($this->pathInfo, $this->basePath)) {
             return substr($this->pathInfo, strlen($this->basePath));
         }
 

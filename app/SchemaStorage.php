@@ -2,6 +2,7 @@
 
 namespace Absolvent\swagger;
 
+use Illuminate\Support\Str;
 use JsonSchema\SchemaStorage as BaseSchemaStorage;
 use JsonSchema\UriResolverInterface;
 use JsonSchema\UriRetrieverInterface;
@@ -24,7 +25,7 @@ class SchemaStorage extends BaseSchemaStorage
 
     public function resolveRef($ref)
     {
-        if (starts_with($ref, self::INTERNAL_PROVIDED_SCHEMA_URI)) {
+        if (Str::startsWith($ref, self::INTERNAL_PROVIDED_SCHEMA_URI)) {
             // in this case normalize the ref name to fetch global schema
             // instead of local variant for which JSON schema is searching for
             return parent::resolveRef(str_replace(
@@ -34,7 +35,7 @@ class SchemaStorage extends BaseSchemaStorage
             ));
         }
 
-        if (starts_with($ref, self::FILE_PROVIDED_SCHEMA_URI_DEFINITIONS)) {
+        if (Str::startsWith($ref, self::FILE_PROVIDED_SCHEMA_URI_DEFINITIONS)) {
             // in this case the schema is nested in definitions list
             return static::resolveRef(str_replace(
                 self::FILE_PROVIDED_SCHEMA_URI_DEFINITIONS,
