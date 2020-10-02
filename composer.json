@@ -13,7 +13,7 @@
     "require": {
         "dflydev/dot-access-data": "^1.1",
         "justinrainbow/json-schema": "^5.0",
-        "laravel/framework": "5.8.*|6.*|7.*",
+        "laravel/framework": "5.8.*|6.*|7.*|8.*",
         "laravel/tinker": "^1.0|^2.0",
         "symfony/yaml": "^3.2|^4.0"
     },
